@@ -16,31 +16,38 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
 class Solution
 {
 public:
     vector<vector<int>> levelOrder(TreeNode *root)
     {
-        queue<TreeNode *> q;
-        vector<vector<int>> res = {};
-        if (root == nullptr)
-            return res;
-        q.push(root);
-        while (!q.empty())
+        queue<TreeNode *> Q;
+        vector<vector<int>> res;
+        TreeNode *temp;
+        if (!root)
+            return {};
+        Q.push(root);
+        while (!Q.empty())
         {
-            int sz = q.size();
-            res.push_back({});
+            int sz = Q.size();
+            vector<int> r;
             while (sz)
             {
-                TreeNode *temp = q.front();
-                res.back().push_back(temp->val); // 用back访问最后一个元素
-                q.pop();
+                temp = Q.front();
+                Q.pop();
+                r.push_back(temp->val);
                 if (temp->left)
-                    q.push(temp->left); // 用队列进行层序遍历
+                    Q.push(temp->left);
                 if (temp->right)
-                    q.push(temp->right);
+                    Q.push(temp->right);
                 sz--;
             }
+            res.push_back(r);
         }
         return res;
     }
