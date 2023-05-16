@@ -26,31 +26,16 @@ class Solution
 public:
     ListNode *reverseList(ListNode *head)
     {
-        // vector<ListNode *> addr;
-        // ListNode *temp = head;
-        // if (head == nullptr)
+        /* 从左到右依次反转，头指针固定，将头指针的next依次向下指直至nullptr */
+        // ListNode *H = head;
+        // while (head && head->next)
         // {
-        //     return head;
+        //     ListNode *temp = head->next;
+        //     head->next = head->next->next;
+        //     temp->next = H;
+        //     H = temp;
         // }
-        // while (head != nullptr)
-        // {
-        //     addr.push_back(head);
-        //     head = head->next;
-        // }
-        // ListNode *res = new ListNode(0, addr.back());
-        // ListNode *ans = res->next;
-        // ListNode *release = res;
-
-        // while (res->next != temp)
-        // {
-        //     addr.pop_back();
-        //     res = res->next;
-        //     res->next = addr.back();
-        // }
-        // res = temp;
-        // res->next = nullptr;
-        // delete release;
-        // return ans;
+        // return H;
 
         ListNode *rev = nullptr;
         while (head != nullptr)

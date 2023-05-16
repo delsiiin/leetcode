@@ -7,8 +7,6 @@
 // @lc code=start
 #include <iostream>
 #include <string>
-#include <vector>
-#include <unordered_map>
 using namespace std;
 
 class Solution
@@ -16,33 +14,21 @@ class Solution
 public:
     string longestCommonPrefix(vector<string> &strs)
     {
-        // 纵向扫描
-        string min;
-        string sub;
-        int i;
-        min = strs[0];
-        sub.push_back(min[0]);
-        for (i = 0; i < min.length(); i++)
+        string min = strs[0];
+        string res = "";
+        for (int i = 0; i < min.length(); i++)
         {
+            res.push_back(min[i]);
             for (string s : strs)
             {
-                if (s.find(sub) != 0 && i == 0)
+                if (s.find(res) != 0)
                 {
-                    return "";
-                }
-                else if (s.find(sub) != 0)
-                {
-                    sub.pop_back();
-                    return sub;
+                    res.pop_back();
+                    return res;
                 }
             }
-            if (i + 1 == min.length())
-            {
-                return sub;
-            }
-            sub.push_back(min[i + 1]);
         }
-        return "";
+        return res;
     }
 };
 // @lc code=end
