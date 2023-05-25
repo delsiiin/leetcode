@@ -21,6 +21,7 @@ class Solution
 public:
     TreeNode *helper(vector<int> &num, int left, int right)
     {
+        /* 二分查找 */
         if (left > right) // 如果left大于right，则表示结点已经使用完，返回空指针结束递归
         {
             return nullptr;
